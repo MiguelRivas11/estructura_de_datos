@@ -5,7 +5,7 @@ class Nodo:
         '''Inicializador de clase'''
         self.val=val
         self.next=None
-        self.prev=None
+        # self.prev=None
 
     def __str__(self) -> str:
         if self.val:
