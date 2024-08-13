@@ -1,0 +1,29 @@
+from Stack_base import Stack
+
+def cadenaBalanceada(symbols: str) -> bool:
+    
+    stack = Stack()
+
+    for char in cadena:  #va a iterar en cada letra de la cadena
+        if char == '(' or char == '[' or char =='{':
+            stack.push(char) # si el caracter cumple con los parentesis de apertua se va a gregar al stack
+        elif char == ')' or char == ']' or char=='}': #si el acaracter es un parentesis de cierre  va auna verificacion
+            if stack.is_empty(): #si el stack esta vacio significa que no hay parentesis de apertura
+                return False 
+            elif char == ')' and stack.top() == '(' : # si la pila no esta vacia va a checar si el parentesis de cierre concide con el de apertura
+                stack.pop()
+            elif char == ']' and stack.top() == '[' :# si conciden se retirara el ultimo elemento 
+                stack.pop()
+            elif char =='}' and stack.top()=='{':
+                stack.pop()
+
+            else:    
+                return False# si no conciden no estara balacenda 
+
+    return stack.is_empty() # despues de revisar todos los caracteres va a revisar si esta vacia y devuelve tru si lo esta sino de lo contrario devolvera false 
+
+cadena = "[e,s,t,r,u,c,t,u,r,a,(d,e[da,to,s])]" 
+if cadenaBalanceada(cadena):
+    print(f'Los paréntesis y corchetes están balanceados en la cadena: {cadena}')
+else:
+    print(f'Los paréntesis y corchetes están desbalanceados en la cadena: {cadena}')
